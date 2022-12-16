@@ -9,6 +9,7 @@ class Block {
 }
 
 
-let square = new Block('square', [1,2,1],'red')
+let square = new Block('square', [[0,1],[0,1]],'red')
 
-console.log(square)
+
+
