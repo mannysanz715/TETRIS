@@ -12,9 +12,23 @@ body{
 }
 
 div {
-  border: 3px solid lightgray;
+  border: 1px solid lightgray;
   font-size: 8vmin;
   text-align: center;
   vertical-align: middle;
-  padding-botton: 10px;
+  padding-bottom: 10px;
+}
+
+
+#row1column1{
+  background-color: black;
+}
+#row0column2{
+  background-color: black;
+}
+#row1column2{
+  background-color: black;
+}
+#row1column3{
+  background-color: black;
 }

@@ -1,9 +1,9 @@
 
 
 class Block {
-  constructor(name, orientation, color){
+  constructor(name, startingPosition, color){
     this.name = name
-    this.orientation = orientation
+    this.startingPosition = startingPosition
     this.color = color
   }
 }
