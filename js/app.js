@@ -6,10 +6,11 @@ import { blocks } from "./tetris-blocks.js"
 //? ----------------------------------------- Constants --------------------------------------------
 
 
+const tetrisClassic = new Audio("assets/TetrisMusic/tetrisClassical.mp3")
 
 
 
-
+const boardSquares = []
 
 //? ----------------------------------------- Variables --------------------------------------------
 let board = []
@@ -22,12 +23,15 @@ let loss = false
 
 const boardContainer = document.querySelector('.board-container')
 
-const boardSquares = []
-
 
 //? ----------------------------------------- Event Listeners --------------------------------------------
 
-
+boardContainer.addEventListener('click', evt =>{
+  console.log('click')
+  tetrisClassic.volume = 1
+  tetrisClassic.loop = true
+  tetrisClassic.play()
+})
 
 
 
@@ -39,7 +43,7 @@ init()
 
 
 function init(){
-  board = [[0,0,0,0,0,1,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0]]
+  board = [[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0]]
   createBoard()
   render()
   console.log(boardSquares[5])
@@ -84,15 +88,25 @@ function loadBlock(){
   pickRandomBlock()
   console.log(currentBlock.startingPosition)
   if(!loss){
-    currentBlock.startingPosition.forEach((arr, arrIdx) => {
-      arr.forEach((value, idx) =>{
-        if(value != 0 && board[arrIdx][idx] === 0){
-          board[arrIdx][idx] = value
-        }
-      })
-    })
+      for(let arr in board){
+        console.log(arr)
+      }
+
+
+
+
+
+
+    // currentBlock.startingPosition.forEach((arr, arrIdx) => {
+      // arr.forEach((value, idx) =>{
+      //   if(value != 0 && board[arrIdx][idx] === 0){
+      //     if((board[arrIdx][idx] && board[arrIdx + 1][idx]) !== 0 ){
+      //       return 
+      //     }else board[arrIdx][idx] = value
+      //   }
+      // })
+    // })
   }
-  
 }
 
 function changeOrientation(){

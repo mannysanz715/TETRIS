@@ -8,7 +8,7 @@ export const blocks = [
   },
   {
     name : 'zBlock',
-    startingPosition : [[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0]],
+    startingPosition : [[0,0,0,2,2,0,0,0,0,0],[0,0,0,0,2,2,0,0,0,0]],
     color : 'red'
   },
   {
@@ -33,7 +33,7 @@ export const blocks = [
   },
   {
     name : 'tBlock',
-    startingPosition : [[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0]],
+    startingPosition : [[0,0,0,0,7,0,0,0,0,0],[0,0,0,7,7,7,0,0,0,0]],
     color : 'red'
   },
 ]
