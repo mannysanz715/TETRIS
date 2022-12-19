@@ -8,11 +8,11 @@ body{
   grid-template-rows: repeat(24, 3.5vmin);
   grid-template-columns: repeat(10, 3.5vmin);
   grid-gap: 0vmin;
-  margin:10px auto;
+  margin: 5px auto;
 }
 
 div {
-  border: 1px solid lightgray;
+  border: 2px solid lightgray;
   font-size: 8vmin;
   text-align: center;
   vertical-align: middle;
@@ -20,15 +20,3 @@ div {
 }
 
 
-#row1column1{
-  background-color: black;
-}
-#row0column2{
-  background-color: black;
-}
-#row1column2{
-  background-color: black;
-}
-#row1column3{
-  background-color: black;
-}
