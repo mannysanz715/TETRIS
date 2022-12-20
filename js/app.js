@@ -61,22 +61,44 @@ function createBoard(){
     let arrIdx = idx
     arr.forEach((el, idx) =>{
       squareDiv = document.createElement('div')
-      boardContainer.appendChild(squareDiv).setAttribute('id', `row${arrIdx}column${idx}`)
+      boardContainer.appendChild(squareDiv).setAttribute('id', `row${arrIdx}scolumn${idx}`)
       squareDiv.setAttribute('class', `board-square`)
       boardSquares.push(squareDiv)
     })
   })
 }
 
+
 function updateBoard(){
+  let newCoord = []
+  boardSquares.forEach((div, idx)=>{
+  
+    let id = div.id
+    let coordinates = id.split('s')
+    
+    coordinates.forEach((pair, idx)=>{
+      if(idx === 0){
+        pair = pair.split(''); 
+        pair.splice(0,3);
+        pair = pair.join('');
+      }
+      else if(idx === 1){
+        pair = pair.split('');
+        pair = pair.splice(-1,1)
+        pair = pair.join('')
+      }
+      newCoord.push(pair)
+    })
+    console.log(newCoord)
+  
+  
+  
+  
 
-  // board.forEach(arr =>{
-  //   arr.forEach(value =>{
-  //     if(value != 0){
-
-  //     }
-  //   })
-  // })
+    if(board[idx] === 1){
+      div.style.backgroundColor = 'blue'
+    }
+  })
 }
 
 function pickRandomBlock(){
@@ -89,13 +111,13 @@ function loadBlock(){
   if(!loss){
     for(let i = 0; i < 3; i++){
       board[i].forEach((value, idx) => {
-        if(value === 0 && currentBlock.startingPosition[i][idx] !== 0){
-          board[i][idx] = currentBlock.startingPosition[i][idx]
-        }
-      })
-      console.log(board)
+        ((value === 0) && (currentBlock.startingPosition[i])) ?
+          board[i][idx] = currentBlock.startingPosition[i][idx] : ''
+      }
+      )
     }
   }
+  console.log(board)
 }
 
 function changeOrientation(){
