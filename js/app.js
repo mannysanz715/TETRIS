@@ -29,7 +29,7 @@ const boardContainer = document.querySelector('.board-container')
 boardContainer.addEventListener('click', evt =>{
   console.log('click')
   tetrisClassic.volume = 1
-  tetrisClassic.loop = true
+  tetrisClassic.loop = true 
   tetrisClassic.play()
 })
 
@@ -46,9 +46,9 @@ function init(){
   board = [[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0]]
   createBoard()
   render()
-  console.log(boardSquares[5])
+
   loadBlock()
-  console.log(board)
+
 }
 
 
@@ -70,13 +70,13 @@ function createBoard(){
 
 function updateBoard(){
 
-  board.forEach(arr =>{
-    arr.forEach(value =>{
-      if(value != 0){
+  // board.forEach(arr =>{
+  //   arr.forEach(value =>{
+  //     if(value != 0){
 
-      }
-    })
-  })
+  //     }
+  //   })
+  // })
 }
 
 function pickRandomBlock(){
@@ -86,26 +86,15 @@ function pickRandomBlock(){
 
 function loadBlock(){
   pickRandomBlock()
-  console.log(currentBlock.startingPosition)
   if(!loss){
-      for(let arr in board){
-        console.log(arr)
-      }
-
-
-
-
-
-
-    // currentBlock.startingPosition.forEach((arr, arrIdx) => {
-      // arr.forEach((value, idx) =>{
-      //   if(value != 0 && board[arrIdx][idx] === 0){
-      //     if((board[arrIdx][idx] && board[arrIdx + 1][idx]) !== 0 ){
-      //       return 
-      //     }else board[arrIdx][idx] = value
-      //   }
-      // })
-    // })
+    for(let i = 0; i < 3; i++){
+      board[i].forEach((value, idx) => {
+        if(value === 0 && currentBlock.startingPosition[i][idx] !== 0){
+          board[i][idx] = currentBlock.startingPosition[i][idx]
+        }
+      })
+      console.log(board)
+    }
   }
 }
 
