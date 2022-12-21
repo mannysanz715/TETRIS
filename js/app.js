@@ -46,14 +46,13 @@ function init(){
   board = [[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0]]
   createBoard()
   render()
-
   loadBlock()
-
 }
 
 
 function render(){
   updateBoard()
+  checkForFullLine()
 }
 
 function createBoard(){
@@ -61,44 +60,28 @@ function createBoard(){
     let arrIdx = idx
     arr.forEach((el, idx) =>{
       squareDiv = document.createElement('div')
-      boardContainer.appendChild(squareDiv).setAttribute('id', `row${arrIdx}scolumn${idx}`)
+      boardContainer.appendChild(squareDiv).setAttribute('id', `${arrIdx}-${idx}`)
       squareDiv.setAttribute('class', `board-square`)
       boardSquares.push(squareDiv)
     })
   })
 }
 
-
 function updateBoard(){
-  let newCoord = []
-  boardSquares.forEach((div, idx)=>{
-  
-    let id = div.id
-    let coordinates = id.split('s')
-    
-    coordinates.forEach((pair, idx)=>{
-      if(idx === 0){
-        pair = pair.split(''); 
-        pair.splice(0,3);
-        pair = pair.join('');
-      }
-      else if(idx === 1){
-        pair = pair.split('');
-        pair = pair.splice(-1,1)
-        pair = pair.join('')
-      }
-      newCoord.push(pair)
-    })
-    console.log(newCoord)
-  
-  
-  
-  
-
-    if(board[idx] === 1){
-      div.style.backgroundColor = 'blue'
-    }
+  let coordinates = []
+  boardSquares.forEach(square =>{
+    let pair = square.id.split('-')
+    coordinates.push(pair)
   })
+  board.forEach((arr, row) =>{
+    arr.forEach((value, column)=>{
+      if(value !== 0){
+        const boardSquare = document.getElementById(`${row}-${column}`)
+        boardSquare.style.backgroundColor = 'blue'
+      }
+    })
+  })
+  console.log(boardSquares)
 }
 
 function pickRandomBlock(){
@@ -117,7 +100,7 @@ function loadBlock(){
       )
     }
   }
-  console.log(board)
+  render()
 }
 
 function changeOrientation(){
@@ -128,14 +111,14 @@ function checkForFullLine(){
 
 }
 
-function checkForLoss(){
 
-}
 
 function moveBlockHorizontal(){
 
 }
 
 function moveBlockVertical(){
-
+  if(currentBlock.startingPosition + 1 === 0){
+  render()
+  }
 }
